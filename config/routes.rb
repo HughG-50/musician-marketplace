@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # putting link to home page anywhere in app we can refer to it as root_path
+  get "/", to: "pages#home", as: "root"
 end
