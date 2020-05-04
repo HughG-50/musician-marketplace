@@ -11,7 +11,7 @@
 
   <body>
 
-    <%#  %>
+    <%# user_signed_in? is a devise helper method that returns a boolean  %>
     <% if user_signed_in? %>
       <%# Have to make a DELETE request to destroy_user_session to sign out %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
