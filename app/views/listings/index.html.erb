@@ -1,0 +1,11 @@
+<h1>Musician Market</h1>
+
+<%= link_to "Sell Instrument", new_listing_path %>
+
+<ul>
+    <%for listing in @listings %>
+    <li>
+        <%= listing.title %> - <%= number_to_currency(listing.price) %>
+    </li>
+    <% end %>
+</ul>

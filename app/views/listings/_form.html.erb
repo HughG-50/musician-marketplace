@@ -1,0 +1,29 @@
+<%# form is going to be created with the Listing object (accessed in new view through instance variable which passes it into the partial) %>
+<%# form_with is a helper method %>
+<%# local: true - means it is sending with an Ajax request so we don't need to reload the page %>
+<%# add field - method: "put" - if we wanted the form to be a different type of request %>
+<%= form_with model: listing, local: true  do |form| %>
+    <div>
+        <%# creates a label  %>
+        <% form.label :title %>
+        <%# creates a text field, pre-populates it with the listing title (this field could be anything) %>
+        <%# can also give it a class for CSS styling %>
+        <%= form.text_field :title, value: listing.title %>
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description, value: listing.description %>
+    </div>
+    <div>
+        <%= form.label :price %>
+        <%= form.number_field :price, value: listing.price, min: 0 %>
+    </div>
+    <div>
+        <%= form.label :picture %>
+        <%= form.file_field :picture, value: listing.picture, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+
+<% end %>

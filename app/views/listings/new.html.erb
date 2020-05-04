@@ -1,0 +1,5 @@
+New
+<%# rendering a partial called form - form can be used in many places %>
+<%# the form needs a listing in order to render the form - so we are passing it, %>
+<%# the new blank Listing we made in the controller (in def new) %>
+<%= render "form", listing: @listing %>
