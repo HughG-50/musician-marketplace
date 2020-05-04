@@ -13,6 +13,12 @@ Seller's email: <%= @listing.user.email %>
 <%# if current user is equal to the user that created the listing, then we render the edit link %>
 <% if current_user.id == @listing.user.id %>
     <%= link_to "edit", edit_listing_path(@listing.id) %>
+
+    <%# makes a new form with the listing model, Ajax, delete request %>
+    <%= form_with model: @listing, local: true, method: :delete do |form| %>
+        <%= submit_tag %>
+    <% end %>
+
 <% end %>
 
 <br>

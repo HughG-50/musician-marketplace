@@ -64,6 +64,17 @@ class ListingsController < ApplicationController
         end
     end
 
+    # Only allows the user to destroy the method if they own it (current_user method)
+    def destroy 
+        @listing = current_user.listings.find_by_id(params["id"])
+
+        if @listing
+            @listing.destroy
+        end
+
+        redirect_to listings_path
+    end
+
 
     # code inside object only can access this code
     private 
