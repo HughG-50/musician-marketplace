@@ -36,8 +36,9 @@ class ListingsController < ApplicationController
     def edit 
         @listing = current_user.listings.find_by_id(params["id"])
 
-        # if we have found a listing render the edit page, otherwise redirect back to main listings page
+        # if we have found one of the user's listings render the listing edit page, otherwise redirect back to main listings page
         if @listing 
+            # we don't technically need this line of code, will do it automatically but makes the code more explicit
             render("edit")
         else 
             redirect_to listings_path
@@ -47,11 +48,14 @@ class ListingsController < ApplicationController
     # UPDATES THE ACTUAL DATABASE (PUT AND PATCH REQUESTS)
     def update 
         @listing = current_user.listings.find_by_id(params["id"])
-        
+
+        # if there is a listing
         if @listing
+            # update the listing in the database
             @listing.update(listing_params)
+            # if there are any errors, re-render the edit form page
             if @listing.errors.any?
-                render "edit"
+                render("edit")
             else
                 redirect_to listings_path
             end

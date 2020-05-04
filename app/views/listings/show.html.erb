@@ -6,10 +6,16 @@
     <%# styling inline for now %>
     <%= image_tag  @listing.picture, style: "width: 200px" %>
 <% end %>
-<%= @listing.price%>
+<%= number_to_currency(@listing.price) %>
 <br>
 Seller's email: <%= @listing.user.email %>
+<br>
+<%# if current user is equal to the user that created the listing, then we render the edit link %>
+<% if current_user.id == @listing.user.id %>
+    <%= link_to "edit", edit_listing_path(@listing.id) %>
+<% end %>
 
+<br>
 <p>
     <%= @listing.description %>
 </p>
