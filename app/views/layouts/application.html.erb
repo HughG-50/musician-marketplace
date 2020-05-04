@@ -10,6 +10,16 @@
   </head>
 
   <body>
+
+    <%#  %>
+    <% if user_signed_in? %>
+      <%# Have to make a DELETE request to destroy_user_session to sign out %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%# Links for devise Gems handling Users can be found using rails Routes %>
+      <%= link_to "Login/Signup", new_user_session_path %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%# yield represents all of the content for a page - put above for login etc to have at top %>
