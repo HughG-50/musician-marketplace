@@ -1,0 +1,15 @@
+<h1> <%= @listing.title %> </h1>
+
+<%# If the listing has a picture attached %>
+<% if @listing.picture.attached? %>
+    <%# the image associated with the listing %>
+    <%# styling inline for now %>
+    <%= image_tag  @listing.picture, style: "width: 200px" %>
+<% end %>
+<%= @listing.price%>
+<br>
+Seller's email: <%= @listing.user.email %>
+
+<p>
+    <%= @listing.description %>
+</p>

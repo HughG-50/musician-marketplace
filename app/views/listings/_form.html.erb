@@ -1,5 +1,15 @@
 <%# form is going to be created with the Listing object (accessed in new view through instance variable which passes it into the partial) %>
 <%# form_with is a helper method %>
+<%# if there are any errors, display the full error message %>
+<% if listing.erros.any? %>
+    <ul>
+        <% listing.erros.full_messages.each do |error| %>
+            <li> <%= error %> </li>
+        <% end %>
+    </ul>
+
+
+<% end %>
 <%# local: true - means it is sending with an Ajax request so we don't need to reload the page %>
 <%# add field - method: "put" - if we wanted the form to be a different type of request %>
 <%= form_with model: listing, local: true  do |form| %>

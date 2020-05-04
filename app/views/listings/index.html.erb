@@ -5,7 +5,9 @@
 <ul>
     <%for listing in @listings %>
     <li>
-        <%= listing.title %> - <%= number_to_currency(listing.price) %>
+        <%# linking to the correct show pages %>
+        <%# we have to give listing_path an id because its a dynamic route - i.e. needs an id %>
+        <%= link_to "#{listing.title} - #{number_to_currency(listing.price)}", listing_path(listing.id) %>      
     </li>
     <% end %>
 </ul>
